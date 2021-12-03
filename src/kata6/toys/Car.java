@@ -9,6 +9,7 @@ public class Car {
    
    private final Integer serialNumber; 
    private final String type = "Car";
+   
     public Car(Integer serialNumber) {
         this.serialNumber = serialNumber;
     }
