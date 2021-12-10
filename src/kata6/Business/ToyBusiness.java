@@ -1,16 +1,21 @@
 
-package kata6.toys;
+package kata6.Business;
 
 import kata6.toyproducts.Toy;
-import kata6.toyproducts.models.HelicopterToy;
-import kata6.toyproducts.models.CarToy;
+
 
 /**
  *
  * @author Patricia
  */
-public class ToyBusiness {
-    SerialNumberGenerator serialNumberGenerator = new SerialNumberGenerator();
+public abstract class ToyBusiness {
+    
+    private Toy toy;
+
+    protected SerialNumberGenerator serialNumberGenerator = new SerialNumberGenerator();
+
+   
+    
     
     /*
     public CarToy createCar(){
@@ -29,7 +34,8 @@ public class ToyBusiness {
     }
     */
     
-     public Toy createToy(String juguete){
+     public  Toy createToy(String juguete){
+        
        /*
          if ("helicoptero".equals(juguete)){
          HelicopterToy helicopter = new HelicopterToy( serialNumberGenerator.next());
@@ -43,6 +49,7 @@ public class ToyBusiness {
             return (Toy) car;
          }     
 */
+       /*
        Toy toy = null;
        switch(juguete){
            case "car":
@@ -57,6 +64,8 @@ public class ToyBusiness {
             break;
 
        }
+*/
        return toy;
+
     }
 }

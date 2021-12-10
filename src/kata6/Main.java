@@ -2,10 +2,9 @@
 package kata6;
 
 import java.util.Scanner;
-import kata6.toyproducts.models.CarToy;
-import kata6.toyproducts.models.HelicopterToy;
-import kata6.toys.SerialNumberGenerator;
-import kata6.toys.ToyBusiness;
+import kata6.Business.Branches.AmericanToyBusiness;
+import kata6.Business.Branches.AsianToyBusiness;
+import kata6.Business.SerialNumberGenerator;
 
 /**
  *
@@ -15,23 +14,70 @@ public class Main {
 
     public static void main(String[] args) {
         SerialNumberGenerator serialNumberGenerator = new SerialNumberGenerator() ;
-        ToyBusiness toyBusiness = new ToyBusiness();
         
-        while(true){
-        System.out.println("Introduce command ");
-        Scanner keyboard = new Scanner(System.in);
-        String command = keyboard.nextLine();
-        if (command.equals("exit")){ 
-            break;
-        }else if (command.equals("car")){
-            toyBusiness.createToy("car");
-        } else if (command.equals("helicopter")){
-            toyBusiness.createToy("helicopter");
-        } else{
-            System.out.println("comando inválido introduce command válido");
         
+        OUTER:
+        while (true) {
+            System.out.println("Introduce command ");
+            Scanner keyboard = new Scanner(System.in);
+            String command = keyboard.nextLine();
+            switch (command) {
+                case "exit":
+                    break OUTER;
+                case "American":
+                    AmericanToyBusiness toyBusinessAmerican = new AmericanToyBusiness();
+                    
+                    
+                    
+                    OUTER1:
+                    while (true) {
+                         System.out.println("Introduce command ");
+                         Scanner keyboard1 = new Scanner(System.in);
+                         String command1 = keyboard.nextLine();
+            
+                         switch (command1) {
+                
+                             case "car":
+                                toyBusinessAmerican.createToy("car");
+                                break;
+                            case "helicopter":
+                                toyBusinessAmerican.createToy("helicopter");
+                                break;
+                            default:
+                                System.out.println("comando inválido introduce command válido");
+                                break;
+                        }
+                    }
+                   
+                case "Asian":
+                    AsianToyBusiness toyBusinessAsian = new AsianToyBusiness();
+                    OUTER2:
+                    while (true) {
+                        System.out.println("Introduce command ");
+                        Scanner keyboard2 = new Scanner(System.in);
+                        String command2 = keyboard.nextLine();
+                        switch (command) {
+                            case "exit":
+                                break OUTER2;
+                            case "car":
+
+                                toyBusinessAsian.createToy("car");
+                                break;
+                            case "helicopter":
+                                toyBusinessAsian.createToy("helicopter");
+                                break;
+                            default:
+                                System.out.println("comando inválido introduce command válido");
+                                break;
+                        }
         }
+                default:
+                    System.out.println("comando inválido introduce command válido");
+                    break;
+            }
         }
+      
+        
         
         System.out.println("Client aplication solutionated");
     }
