@@ -23,15 +23,15 @@ public class AsianHelicopterToy implements Toy{
     @Override
     public void pack() {
         System.out.println("El " + type + " con el número de serie " 
-                +serialNumber.toString() +"está empaquetado para el"
-                        + "sector asiatico");
+                +serialNumber.toString() +" está empaquetado para el"
+                        + " sector asiatico");
     }
 
     @Override
     public void label() {
         System.out.println("El " + type  +" con el número de serie " 
-                +serialNumber.toString() +"está empaquetado para el "
-                        + "mercado asiatico");
+                +serialNumber.toString() +" está empaquetado para el "
+                        + " mercado asiatico");
     
     }
 }

@@ -1,5 +1,5 @@
 
-package kata6.Business;
+package kata6.Factories;
 
 /**
  *

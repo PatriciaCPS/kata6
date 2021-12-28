@@ -21,15 +21,15 @@ public class AmericanCarToy implements Toy{
     @Override
     public void pack() {
         System.out.println("El " + type + " con el número de serie " 
-                +serialNumber.toString() +"está empaquetado para el"
-                        + "sector americano");
+                +serialNumber.toString() +" está empaquetado para el"
+                        + " sector americano");
     }
 
     @Override
     public void label() {
         System.out.println("El " + type  +" con el número de serie " 
-                +serialNumber.toString() +"está empaquetado para el "
-                        + "mercado americano");
+                +serialNumber.toString() +" está empaquetado para el "
+                        + " mercado americano");
     
     }
     

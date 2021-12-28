@@ -1,10 +1,14 @@
 
 package kata6;
 
+
+import java.util.ArrayList;
 import java.util.Scanner;
-import kata6.Business.Branches.AmericanToyBusiness;
-import kata6.Business.Branches.AsianToyBusiness;
-import kata6.Business.SerialNumberGenerator;
+import java.util.stream.Collectors;
+import kata6.Business.ToyBusiness;
+import kata6.Factories.Regionalfactories.AmericanToyFactory;
+import kata6.Factories.Regionalfactories.AsianToyFactory;
+import kata6.toyproducts.Toy;
 
 /**
  *
@@ -13,73 +17,38 @@ import kata6.Business.SerialNumberGenerator;
 public class Main {
 
     public static void main(String[] args) {
-        SerialNumberGenerator serialNumberGenerator = new SerialNumberGenerator() ;
-        
-        
-        OUTER:
-        while (true) {
-            System.out.println("Introduce command ");
-            Scanner keyboard = new Scanner(System.in);
-            String command = keyboard.nextLine();
-            switch (command) {
-                case "exit":
-                    break OUTER;
-                case "American":
-                    AmericanToyBusiness toyBusinessAmerican = new AmericanToyBusiness();
-                    
-                    
-                    
-                    OUTER1:
-                    while (true) {
-                         System.out.println("Introduce command ");
-                         Scanner keyboard1 = new Scanner(System.in);
-                         String command1 = keyboard.nextLine();
-            
-                         switch (command1) {
-                
-                             case "car":
-                                toyBusinessAmerican.createToy("car");
-                                break;
-                            case "helicopter":
-                                toyBusinessAmerican.createToy("helicopter");
-                                break;
-                            default:
-                                System.out.println("comando inválido introduce command válido");
-                                break;
-                        }
-                    }
-                   
-                case "Asian":
-                    AsianToyBusiness toyBusinessAsian = new AsianToyBusiness();
-                    OUTER2:
-                    while (true) {
-                        System.out.println("Introduce command ");
-                        Scanner keyboard2 = new Scanner(System.in);
-                        String command2 = keyboard.nextLine();
-                        switch (command) {
-                            case "exit":
-                                break OUTER2;
-                            case "car":
-
-                                toyBusinessAsian.createToy("car");
-                                break;
-                            case "helicopter":
-                                toyBusinessAsian.createToy("helicopter");
-                                break;
-                            default:
-                                System.out.println("comando inválido introduce command válido");
-                                break;
-                        }
-        }
-                default:
-                    System.out.println("comando inválido introduce command válido");
-                    break;
-            }
-        }
-      
-        
-        
-        System.out.println("Client aplication solutionated");
-    }
+       ArrayList<Toy> toys = new ArrayList<>();
+       AmericanToyFactory americanToyFactory = new AmericanToyFactory();
+       AsianToyFactory asianToyFactory = new AsianToyFactory();
+       ToyBusiness toyBusiness = new ToyBusiness(americanToyFactory);
     
+       Scanner in = new Scanner(System.in);
+       String line = "";
+       while(!line.equals("exit")){
+           line = in.nextLine();
+           switch(line){
+               case "car":
+                   toys.add(toyBusiness.produceToy(line));
+                   System.out.println("Toys: " + toys.stream()
+                           .map(Object::toString)
+                           .collect(Collectors.joining(", ")));
+                   break;
+                   
+               case "helicopter":
+                   toys.add(toyBusiness.produceToy(line));
+                   System.out.println("Toys: " + toys.stream()
+                           .map(Object::toString)
+                           .collect(Collectors.joining(", ")));
+                   break;
+                   
+               case "exit":
+                   System.out.println("Exiting...");
+                   break;
+                default:
+                    System.out.println("Command unknown");
+                    break;
+
+           }
+       }
+    }
 }
